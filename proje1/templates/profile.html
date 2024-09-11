@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {% if data %}
+        <center>
+            <h1>User Profile</h1>
+        </center>
+        
+        <h3>Username: {{ pdata.username }}</h3>
+        <h3>Email: {{ pdata.email }}</h3>
+        <h3>Phone: {{ data.phone }}</h3>
+        <h3>Address: {{ data.address }}</h3>
+        <h3>Street: {{ data.street }}</h3>
+        <h3>Landmark: {{ data.landmark }}</h3>
+        <h3>City: {{ data.city }}</h3>
+        <h3>State: {{ data.state }}</h3>
+        <h3>Zipcode: {{ data.zipcode }}</h3>
+        <a href="{% url 'add_profile' %}" class="btn btn-warning">Edit Profile</a>
+    {% else %}
+        <center>
+            <h1>User Profile</h1>
+        </center>
+        
+        <h3>Username: {{ pdata.username }}</h3>
+        <h3>Email: {{ pdata.email }}</h3>
+        <a href="{% url 'add_profile' %}" class="btn btn-warning">Add Profile</a>
+    {% endif %}
+{% endblock %}

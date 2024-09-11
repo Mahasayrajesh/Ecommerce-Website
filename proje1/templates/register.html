@@ -1,0 +1,22 @@
+{% include 'base.html' %}
+{% load crispy_forms_tags %} 
+{% block content %}
+    {% if  registered %}
+        <h1>Thanku for Register</h1>
+    {% else %}
+    <form method="POST">
+        {% csrf_token %}
+        <br> 
+        {{forms.username|as_crispy_field}}
+        <br>
+        {{forms.email|as_crispy_field}}
+        <br>
+        {{forms.password|as_crispy_field}}
+        <br>
+    
+        
+        <input type="submit" value="REGISTER" class="btn btn-success">
+
+    </form>
+    {% endif %}
+    {% endblock %}

@@ -1,0 +1,23 @@
+{% include "base.html" %} {% block content %}
+<h1>WISHLISTED PRODUCTS</h1>
+
+
+<div class="row" style="padding: 20px;">
+    {% for a in wishlisted %}
+    <div class="col-md-12 mb-3">
+        <div class="card">
+            
+            <div class="card-body">
+                <img src="{{a.prod_img}}" alt="" height="400px" width="400px">
+
+                <h5 class="card-title">NAME: {{a.product_name}}</h5>
+                <p class="card-text">DESCRIPTION: {{a.description}}</p>
+                <p class="card-text">PRICE: ₹{{a.price}}</p>
+            </div>
+
+        </div>
+
+    </div>
+   {% endfor %}
+</div>
+{% endblock %}

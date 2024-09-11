@@ -1,0 +1,70 @@
+{% include "base.html" %} 
+{% block content %}
+
+
+<div class="card mb-3" style="max-width: 540px">
+  
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img
+        src="{{products.prod_img.url}}"
+        class="img-fluid rounded-start"
+        alt="..."
+      />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body  shi">
+        <h5 class="card-title">Category:{{products.category}}</h5>
+        <h6 class="card-title">Name:{{products.product_name}}</h6>
+        <h5 class="card-title">Price:₹{{products.price}}</h5>
+        <h6 class="card-text">Description:{{products.description}}<h6>
+        <div class="flex-container">
+          {% if prod_like %}
+          <form action="{% url 'productliked' pk=products.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit">
+              <input type="hidden" name="product_id" value="{{products.id}}">
+              <i class="fa-solid fa-heart" style="color: red;"></i>
+            </button>
+           </form> 
+          {% else %}
+          <form action="{% url 'productliked' pk=products.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit">
+              <input type="hidden" name="product_id" value="{{products.id}}">
+              <i class="fa-regular fa-heart"></i>
+            </button>
+           </form> 
+          {% endif %}
+
+          {% if prod_cart %}
+          <form action="{% url 'productcart' pk=products.id %}" method="POST" class="ff">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">
+              <input type="hidden" name="prod_id" value="{{products.id}}">
+              <h6>REMOVE</h6>
+            </button>
+           </form> 
+          {% else %}
+          <form action="{% url 'productcart' pk=products.id %}" method="POST" class="ff">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">
+              <input type="hidden" name="prod_id" value="{{products.id}}">
+              <h6>ADD TO CART</h6>
+            </button>
+           </form> 
+          {% endif %}
+        </div>
+          
+            
+          
+         
+         
+         
+         
+      </div>
+    </div>
+  </div>
+  
+</div>
+{% endblock %}

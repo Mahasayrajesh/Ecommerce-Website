@@ -1,0 +1,31 @@
+{% include "base.html" %}
+{% block content %}
+{% if prod %}
+    <p>Showing result for : {{prod}}</p>
+{% endif %}
+<div class="row" style="padding: 20px">
+    {% for product in products %}
+    <div class="col-md-4 mb-3">
+      <div class="card">
+        <a href="{% url 'details' pk=product.pk %}"
+          ><img
+            src="{{product.prod_img.url}}"
+            class="crd-img-top"
+            height="300px"
+            alt=""
+        /></a>
+        <div class="card-body">
+          <h5 class="card-title">{{product.product_name}}</h5>
+          <p class="card-text">{{product.description}}</p>
+          <p class="card-text">₹{{product.price}}</p>
+        </div>
+      </div>
+    </div>
+        {% empty %}
+            <div class="col">
+                <p>No result found for : {{prod}}</p>
+
+            </div>
+    {% endfor %}
+  </div>
+{% endblock %}

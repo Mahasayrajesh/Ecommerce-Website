@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <br>
+    
+    <center><h1>Add/Edit Profile</h1></center>
+        
+    <form method="POST" >
+        {% csrf_token %}
+           
+            
+            {{ form.phone|as_crispy_field }}
+            <br>
+            {{ form.address|as_crispy_field }}
+            <br>
+            {{ form.street|as_crispy_field }}
+            <br>
+            {{ form.landmark|as_crispy_field }}
+            <br>
+            {{ form.city|as_crispy_field }}
+            <br>
+            {{ form.state|as_crispy_field }}
+            <br>
+            {{ form.zipcode|as_crispy_field }}
+
+         <input type="submit" class="btn btn-dark" value="SAVE">
+         
+    </form>
+      
+{% endblock %}
+
+    
